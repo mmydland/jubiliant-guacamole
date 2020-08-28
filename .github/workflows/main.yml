@@ -26,6 +26,5 @@ jobs:
       - run: |
           mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
           for added_modified_file in "${added_modified_files[@]}"; do
-            chmod 777 ./.github/workflows/validate.sh
             ./.github/workflows/validate.sh ./${added_modified_file}
           done
